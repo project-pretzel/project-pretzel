@@ -1,0 +1,5 @@
+.bowerrc
+
+{
+  "directory": "public/client/lib"
+}
