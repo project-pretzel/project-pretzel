@@ -4,7 +4,8 @@
   "description": "Greenfield Project for HackReactor",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec spec/*.js"
+    "test": "./node_modules/.bin/mocha --reporter spec spec/*.js",
+    "start": "./node_modules/.bin/nodemon server/server.js --ignore public/"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,15 @@
   },
   "homepage": "https://github.com/project-pretzel/project-pretzel#readme",
   "dependencies": {
-    "body-parser": "^1.17.1",
+    "body-parser": "*",
     "express": "^4.15.2",
-    "request": "^2.81.0"
   },
   "devDependencies": {
     "chai": "*",
-    "mocha": "*"
+    "chai-http": "^3.0.0",
+    "eslint": "^3.17.1",
+    "mocha": "*",
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
   }
 }
