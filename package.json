@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/project-pretzel/project-pretzel#readme",
   "dependencies": {
-    "body-parser": "^1.17.1",
+    "body-parser": "*",
     "express": "^4.15.2",
     "request": "^2.81.0"
   },
   "devDependencies": {
     "chai": "*",
+    "chai-http": "^3.0.0",
     "mocha": "*"
   }
 }
