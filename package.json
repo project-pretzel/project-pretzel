@@ -1,1 +1,22 @@
-package.json
+{
+  "name": "project-pretzel",
+  "version": "1.0.0",
+  "description": "Greenfield Project for HackReactor",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clarkbaum/project-pretzel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Clarkbaum/project-pretzel/issues"
+  },
+  "homepage": "https://github.com/Clarkbaum/project-pretzel#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
