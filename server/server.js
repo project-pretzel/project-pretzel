@@ -20,5 +20,7 @@ app.get('/', function (req, res) {
 });
 
 var port = process.env.PORT || 4040;
-app.listen(port);
+if(!module.parent){
+    app.listen(port);
+}
 console.log("Listening on port " + port);
