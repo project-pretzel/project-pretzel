@@ -11,11 +11,12 @@ app.use( bodyParser.json() );
 
 app.post('/', function (req, res) {
   console.log('post /');
+  res.sendStatus(200); // for testing purposes
 });
 
 app.get('/', function (req, res) {
   console.log('get /');
-  res.send(200);
+  res.sendStatus(200); // for testing purposes
 });
 
 var port = process.env.PORT || 4040;
