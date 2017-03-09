@@ -1,5 +1,5 @@
 var assert = require('assert');
-//var chai = require('chai'), expect = chai.expect, should = chai.should();
+var chai = require('chai'), expect = chai.expect, should = chai.should();
 var converter = require('../server/server.js');
 var request = require('request');
 
