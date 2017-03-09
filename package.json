@@ -19,7 +19,9 @@
   "homepage": "https://github.com/project-pretzel/project-pretzel#readme",
   "dependencies": {
     "body-parser": "*",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "chai": "*",
