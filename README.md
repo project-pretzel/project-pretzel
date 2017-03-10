@@ -1,5 +1,18 @@
-# project-prezel
+# pretzel
 Greenfield Project for HackReactor
 
-# how to continuely complile when file changes
-babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline -w
+#### how to start
+```shell
+$ npm install
+$ npm start
+```
+
+#### how to test
+```shell
+$ npm test
+```
+
+#### how to continuely complile when file changes
+```shell
+$ babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline -w
+```
