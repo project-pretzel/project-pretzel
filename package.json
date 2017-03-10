@@ -4,9 +4,9 @@
   "description": "Greenfield Project for HackReactor",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec spec/*.js",
+    "test": "./node_modules/.bin/mocha --reporter spec spec/*.js --silent lint",
     "start": "./node_modules/.bin/nodemon server/server.js --ignore public/",
-    "start2": "webpack-dev-server --hot"
+    "lint": "eslint index.js"
   },
   "repository": {
     "type": "git",
@@ -39,8 +39,11 @@
     "chai": "*",
     "chai-http": "^3.0.0",
     "eslint": "^3.17.1",
+    "eslint-config-google": "^0.7.1",
     "mocha": "*",
     "nodemon": "^1.11.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "sinon": "^1.17.7",
+    "sinon-server": "^0.1.1"
   }
 }
