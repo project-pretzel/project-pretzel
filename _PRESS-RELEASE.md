@@ -21,8 +21,8 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## Summary ##
+  > Pretzel is for people who want to stay up-to-date and engaged with trending topics. With Pretzel you can see the top       trending stories and chat in realtime with other users who are also reading about the same trend.
  
 ## Be in the loop. ##
   > Pretzel is a place where you can interact with top trends and discuss them in realtime.
@@ -49,4 +49,7 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Summary ##
   > Pretzel is for people who want to stay up-to-date and engaged with trending topics. With Pretzel you can see the top       trending stories and chat in realtime with other users who are also reading about the same trend.
+  
+  ## Sub-Heading ##
+  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 -->
