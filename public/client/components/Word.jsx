@@ -5,7 +5,9 @@ class Word extends React.Component{
 
   render(){
     return(
-
+      <div>
+        Word Test
+      </div>
     )
   }
 }
