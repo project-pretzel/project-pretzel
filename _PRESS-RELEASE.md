@@ -26,9 +26,6 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Be in the loop. ##
   > Pretzel is a place where you can interact with top trends and discuss them in realtime.
-
-## Summary ##
-  > Pretzel is for people who want to stay up-to-date and engaged with trending topics. With Pretzel you can see the top       trending stories and chat in realtime with other users who are also reading about the same trend.
  
 ## Problem ##
   > It's hard to be in the loop. Watching the news and reading articles only gives you one side of the story.
@@ -48,5 +45,8 @@ Once the project moves into development, the press release can be used as a touc
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Wrap it up and give pointers where the reader should go next.  
+
+## Summary ##
+  > Pretzel is for people who want to stay up-to-date and engaged with trending topics. With Pretzel you can see the top       trending stories and chat in realtime with other users who are also reading about the same trend.
 -->
