@@ -19,6 +19,7 @@ db/
 public/client/lib
 dist/
 build/
+npm-debug.log
 
 # Floobits
 .floo
