@@ -41,3 +41,4 @@
 21 error This is not a bug in npm.
 21 error Tell the package author to fix their package.json file. JSON.parse
 22 verbose exit [ 1, true ]
+
