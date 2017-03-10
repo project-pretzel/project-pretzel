@@ -4,15 +4,9 @@
   "description": "Greenfield Project for HackReactor",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "./node_modules/.bin/mocha --reporter spec spec/*.js",
-    "start": "./node_modules/.bin/nodemon server/server.js --ignore public/",
-    "start2": "webpack-dev-server --hot"
-=======
     "test": "./node_modules/.bin/mocha --reporter spec spec/*.js --silent lint",
     "start": "./node_modules/.bin/nodemon server/server.js --ignore public/",
     "lint": "eslint index.js"
->>>>>>> Added - eslint - Google Style Guide
   },
   "repository": {
     "type": "git",
