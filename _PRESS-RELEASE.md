@@ -33,7 +33,7 @@ Once the project moves into development, the press release can be used as a touc
 ## Solution ##
   > Pretzel makes it easy to stay on topic and discuss with others what's happening in our world.
 
-## Quote from You ##
+## Quote from Us ##
   > "You need a quote from me?" <br />
   -Clark Baumgartner, Project Manager
 
