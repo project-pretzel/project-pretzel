@@ -1,1 +1,0 @@
-ReactDOM.render(<App Pretzel={[{fakeData: 'test'}]} />, document.getElementById('app'));
