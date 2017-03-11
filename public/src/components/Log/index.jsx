@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import classnames from 'classnames';
 
-import './styles/style.js'
+import './style.css'
 
 export default class About extends Component {
 
