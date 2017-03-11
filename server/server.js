@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var request = require('request');
 
 var app = express();
 module.exports = app;
@@ -19,8 +20,14 @@ app.post('/', function (req, res) {
 
 app.get('/', function (req, res) {
   console.log('get /');
-  res.sendFile(path.resolve('public', 'dist', 'index.html'));
-  //res.sendStatus(200); // for testing purposes
+  // res.sendFile(path.resolve('public', 'dist', 'index.html')); //commented out because my directory doesn't contain file
+  res.sendStatus(500); // for testing purposes
+});
+
+request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
+  console.log(JSON.stringify(res));
+  // console.log('req', req);
+  // console.log('res', res);
 });
 
 var port = process.env.PORT || 8000;
