@@ -7,7 +7,8 @@ module.exports = app;
 
 // app.use(bodyParser.urlencoded());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json() );
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/..'));
 
 //app.use(express.static(path.resolve(__dirname, '..', 'public', 'client')));
 
@@ -18,8 +19,8 @@ app.post('/', function (req, res) {
 
 app.get('/', function (req, res) {
   console.log('get /');
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
-  res.sendStatus(200); // for testing purposes
+  res.sendFile(path.resolve('public', 'dist', 'index.html'));
+  //res.sendStatus(200); // for testing purposes
 });
 
 var port = process.env.PORT || 8000;
