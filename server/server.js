@@ -7,7 +7,7 @@ var app = express();
 module.exports = app;
 
 // app.use(bodyParser.urlencoded());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/..'));
 
@@ -25,9 +25,7 @@ app.get('/', function (req, res) {
 });
 
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
-  console.log(JSON.stringify(res));
-  // console.log('req', req);
-  // console.log('res', res);
+  console.log(JSON.parse(res.body).united_states); // getting top 20 US google trends
 });
 
 var port = process.env.PORT || 8000;
