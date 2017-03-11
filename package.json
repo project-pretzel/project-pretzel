@@ -27,23 +27,15 @@
     "body-parser": "*",
     "bootstrap": "^4.0.0-alpha.2",
     "classnames": "^2.2.5",
-<<<<<<< 3de6463ebb353471590fa3e6637986c00a4077ea
     "express": "^4.15.2",
     "http": "0.0.0",
-=======
     "ejs": "^2.5.6",
-    "express": "^4.14.1",
->>>>>>> Skeleton for express/react complete
     "lodash": "^4.6.1",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.8",
-<<<<<<< 3de6463ebb353471590fa3e6637986c00a4077ea
     "react-d3-library": "^1.1.7",
     "react-dom": "^15.4.2",
-=======
-    "react-dom": "^15.3.2",
     "react-router": "^2.6.1",
->>>>>>> Skeleton for express/react complete
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
