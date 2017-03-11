@@ -26,6 +26,7 @@
     "body-parser": "*",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.15.2",
+    "http": "0.0.0",
     "lodash": "^4.6.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
