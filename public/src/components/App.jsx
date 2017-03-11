@@ -12,11 +12,7 @@ class App extends React.Component  {
   render() {
     return(
       <div>
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom affix-top">
-
-          <Log />
-        </nav>
-        <header class="word">
+        <header >
           <Word />
         </header>
       </div>

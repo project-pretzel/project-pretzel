@@ -19,6 +19,7 @@ db/
 public/client/lib
 dist/
 build/
+compiled/
 npm-debug.log
 
 # Floobits
