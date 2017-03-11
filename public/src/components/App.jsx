@@ -12,11 +12,17 @@ class App extends React.Component  {
   render() {
     return(
       <div>
-        <Log />
-        <Word />
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom affix-top">
+
+          <Log />
+        </nav>
+        <header class="word">
+          <Word />
+        </header>
       </div>
     );
   }
 }
 
 window.App = App;
+
