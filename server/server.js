@@ -1,7 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var request = require('request');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const request = require('request');
 
 var app = express();
 module.exports = app;
@@ -25,14 +25,16 @@ app.get('/', function (req, res) {
 });
 
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
-  console.log(JSON.parse(res.body).united_states); // getting top 20 US google trends
-  res.sendFile(path.resolve('public', 'src', 'index.html'));
-  //res.sendStatus(200); // for testing purposes
+  if (res.body) {
+    var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
+    console.log(top20Trends);
+  };
 
+  console.log(top20Trends);
 });
 
 var port = process.env.PORT || 8000;
-if(!module.parent){
+if(!module.parent) {
     app.listen(port);
 }
 console.log("Listening on port " + port);
