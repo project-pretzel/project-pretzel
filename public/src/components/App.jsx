@@ -12,11 +12,13 @@ class App extends React.Component  {
   render() {
     return(
       <div>
-        <Log />
-        <Word />
+        <header >
+          <Word />
+        </header>
       </div>
     );
   }
 }
 
 window.App = App;
+

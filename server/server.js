@@ -26,6 +26,9 @@ app.get('/', function (req, res) {
 
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
   console.log(JSON.parse(res.body).united_states); // getting top 20 US google trends
+  res.sendFile(path.resolve('public', 'src', 'index.html'));
+  //res.sendStatus(200); // for testing purposes
+
 });
 
 var port = process.env.PORT || 8000;
