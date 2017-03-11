@@ -19,7 +19,7 @@ app.post('/', function (req, res) {
 
 app.get('/', function (req, res) {
   console.log('get /');
-  res.sendFile(path.resolve('public', 'dist', 'index.html'));
+  res.sendFile(path.resolve('public', 'src', 'index.html'));
   //res.sendStatus(200); // for testing purposes
 });
 
