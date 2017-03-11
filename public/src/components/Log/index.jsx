@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import './style.css'
 
-export default class About extends Component {
+export default class Log extends Component {
 
   render() {
     <div>
@@ -11,5 +11,3 @@ export default class About extends Component {
     </div>
   }
 );
-
-window.Log = Log;

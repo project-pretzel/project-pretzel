@@ -1,15 +1,13 @@
-class Word extends React.Component{
-  constructor(props){
-    super(props);
-  }
+import React, { PropTypes, Component } from 'react';
+import classnames from 'classnames';
 
-  render(){
-    return(
-      <div>
-        Word Test
-      </div>
-    )
-  }
-}
+import './style.css'
 
-window.Word = Word;
+export default class Word extends Component {
+
+  render() {
+    <div>
+      Word test
+    </div>
+  }
+);
