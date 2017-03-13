@@ -47,4 +47,6 @@ CREATE TABLE users (ID int NOT NULL, googleID VARCHAR(25), name VARCHAR(25), ema
 CREATE TABLE messages (ID int NOT NULL, userID int NOT NULL, text TEXT, time DATETIME, PRIMARY KEY (ID), FOREIGN KEY (userID) REFERENCES users(ID));
 
 (schema.sql should do this for you, will end up removing these steps probably)
+
+mysql -u root < src/schema.sql (runs sql file)
 ```
