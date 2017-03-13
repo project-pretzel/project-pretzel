@@ -20,6 +20,7 @@ public/client/lib
 dist/
 build/
 compiled/
+babel_cache/
 npm-debug.log
 
 # Floobits
