@@ -41,4 +41,10 @@ brew install mysql
 mysql.server stop (make sure you dont have one running)
 mysql.server start
 mysql -u root -p (blank password)
+
+CREATE TABLE users (ID int NOT NULL, googleID VARCHAR(25), name VARCHAR(25), email VARCHAR(25), img TEXT, PRIMARY KEY (ID));
+
+CREATE TABLE messages (ID int NOT NULL, userID int NOT NULL, text TEXT, time DATETIME, PRIMARY KEY (ID), FOREIGN KEY (userID) REFERENCES users(ID));
+
+(schema.sql should do this for you, will end up removing these steps probably)
 ```
