@@ -1,9 +1,10 @@
 var assert = require('assert');
 var chai = require('chai'), expect = chai.expect, should = chai.should();
-var server = require('../server/server.js');
+var server = require('../src/server.js');
 var request = require('request');
 var chaiHttp = require('chai-http');
 
+//these here test aint gunna work no mo
 chai.use(chaiHttp);
 
 describe('Server', function() {
