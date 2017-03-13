@@ -2,6 +2,7 @@
 Greenfield Project for HackReactor
 
 #### how to start
+#### (not used anymore)
 ```shell
 $ npm install
 $ npm start
@@ -13,6 +14,7 @@ $ npm test
 ```
 
 #### how to continuely complile when file changes
+#### (not used anymore)
 ```shell
 $ babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled,server,spec --source-maps inline -w
 ```
@@ -25,4 +27,18 @@ $ NODE_ENV=production node_modules/.bin/webpack -p
 #### used to run the server
 ```shell
 $ NODE_ENV=production node_modules/.bin/babel-node --presets react,es2015 src/server.js
+```
+
+#### steps to get nathan's updates working
+```shell
+npm install --save-dev webpack@1.13.x babel-loader@6.2.x http-server@0.9.x
+```
+
+###steps to get mysql working
+```shell
+brew install mysql
+
+mysql.server stop (make sure you dont have one running)
+mysql.server start
+mysql -u root -p (blank password)
 ```
