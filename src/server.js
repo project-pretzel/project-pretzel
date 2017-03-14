@@ -9,6 +9,7 @@ import { match, RouterContext } from 'react-router';
 import routes from './routes';
 import NotFoundPage from './components/NotFoundPage';
 import request from 'request';
+import parser from 'xml2json';
 
 // initialize the server and configure support for ejs templates
 const app = new Express();
@@ -53,18 +54,18 @@ app.get('*', (req, res) => {
 });
 
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
-  console.log(JSON.parse(res.body).united_states); // getting top 20 US google trends
-  //res.sendStatus(200); // for testing purposes
   if (res.body) {
+
     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
-    console.log(top20Trends);
     top20Trends.forEach(function(current, index) {
       request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
-        console.log(res);
+        console.log(parser.toJson(res.body));
       });
     });
   };
 });
+
+
 
 // start the server
 const port = process.env.PORT || 3000;
