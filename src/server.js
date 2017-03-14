@@ -57,16 +57,16 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
   if (res.body) {
 
     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
-    // top20Trends.forEach(function(current, index) {
     var options = {
       object: true,
       sanitize: true
     }
-      request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ top20Trends[1] +'&ned=us&output=rss', function(req, res) {
+    top20Trends.forEach(function(current, index) {
+      request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
         var feed = parser.toJson(res.body, options);
         console.dir(feed.rss);
       });
-    // });
+    });
   };
 });
 
