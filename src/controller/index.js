@@ -12,7 +12,8 @@ module.exports = {
     },
     post: function (req, res) {
       console.log("message post")
-      var params = [req.body.userid, req.body.msgtext, req.body.msgtime];
+      console.log("req", req)
+      var params = [req.body.username, req.body.msgtext];
       model.messages.post(params, function(err, results) {
         if (err) { console.log("err message post", err);}
         res.sendStatus(201);
