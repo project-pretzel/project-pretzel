@@ -22,7 +22,7 @@ $ babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compil
 $ NODE_ENV=production node_modules/.bin/webpack -p
 ```
 
-### used to run the server
+#### used to run the server
 ```shell
 $ NODE_ENV=production node_modules/.bin/babel-node --presets react,es2015 src/server.js
 ```
