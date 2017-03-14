@@ -55,7 +55,6 @@ app.get('*', (req, res) => {
 
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
   if (res.body) {
-
     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
     var options = {
       object: true,
@@ -67,6 +66,8 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
         console.dir(feed.rss);
       });
     });
+  } else {
+    console.error(res.error);
   };
 });
 
