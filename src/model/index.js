@@ -15,9 +15,9 @@ module.exports = {
     },
     post: function (params, callback) {
       // create a message for a user id based on the given username
-      // expect params to be {userid: '', msgtext: '', msgtime: ''}
+      // expect params to be {name(from users): '', msgtext: ''}
       var queryStr = 'insert into messages(userid, msgtext, msgtime) \
-                      values ((select id from users where userid = ? limit 1), ?, now())';
+                      values ((select id from users where name = ? limit 1), ?, now())';
       db.dbConnection.query(queryStr, params, function(err, results) {
         callback(err, results);
       });
