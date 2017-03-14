@@ -24,6 +24,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 app.use(parser.json());
 
+
+app.get('/messages', controller.messages.get);
+app.post('/messages', controller.messages.post);
+app.get('/users', controller.users.get);
+app.post('/users', controller.users.post);
+
 // universal routing and rendering
 app.get('*', (req, res) => {
   match(
@@ -80,8 +86,6 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
     console.error(res.error);
   };
 });
-
-
 
 // start the server
 const port = process.env.PORT || 3000;
