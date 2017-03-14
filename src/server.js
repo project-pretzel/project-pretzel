@@ -22,6 +22,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 app.use(parser.json());
 
+
+app.get('/messages', controller.messages.get);
+app.post('/messages', controller.messages.post);
+app.get('/users', controller.users.get);
+app.post('/users', controller.users.post);
+
 // universal routing and rendering
 app.get('*', (req, res) => {
   match(
@@ -54,12 +60,6 @@ app.get('*', (req, res) => {
     }
   );
 });
-
-app.get('/messages', controller.messages.get);
-app.post('/messages', controller.messages.post);
-app.get('/users', controller.users.get);
-app.post('/users', controller.users.post);
-
 // start the server
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'production';
