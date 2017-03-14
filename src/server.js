@@ -58,7 +58,8 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
     var options = {
       object: true,
-      sanitize: true
+      sanitize: true,
+      trim: true
     }
     top20Trends.forEach(function(current, index) {
       request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
