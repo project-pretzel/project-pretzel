@@ -7,19 +7,19 @@ CREATE DATABASE pretzel;
 USE pretzel;
 
 CREATE TABLE users (
-  id int NOT NULL, 
+  id int NOT NULL AUTO_INCREMENT, 
   googleid VARCHAR(25), 
   name VARCHAR(25), 
   email VARCHAR(25), 
   img TEXT, 
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE messages (
-  id int NOT NULL, 
+  id int NOT NULL AUTO_INCREMENT, 
   userid int NOT NULL, 
   msgtext TEXT, 
   msgtime DATETIME, 
-  PRIMARY KEY (ID), 
-  FOREIGN KEY (userID) REFERENCES users(ID)
+  PRIMARY KEY (id), 
+  FOREIGN KEY (userid) REFERENCES users(id)
 );
