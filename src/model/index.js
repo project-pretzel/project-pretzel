@@ -8,7 +8,7 @@ module.exports = {
       // id , userid, msgtext, msgtime 
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
                       from messages left outer join users on (messages.userid = users.id) \
-                      order by messa';
+                      order by messages.id desc';
       db.dbConnection.query(queryStr, function(err, results) {
         callback(err, results);
       });
