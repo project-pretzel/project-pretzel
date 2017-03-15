@@ -68,6 +68,7 @@ app.post('/messages', controller.messages.post);
 app.get('/users', controller.users.get);
 app.post('/users', controller.users.post);
 
+
 request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
   if (res.body) {
     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
