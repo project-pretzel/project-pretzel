@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --reporter spec spec/*.js",
-    "start": "nodemon server/server.js --ignore public/",
+    "start": "NODE_ENV=production node_modules/.bin/babel-node --presets react,es2015 src/server.js",
     "lint": "eslint --config=/.eslintrc.js *.js"
   },
   "repository": {
@@ -28,7 +28,7 @@
     "bootstrap": "^4.0.0-alpha.2",
     "classnames": "^2.2.5",
     "ejs": "^2.5.6",
-    "express": "^4.15.2",
+    "express": "^4.14.1",
     "googleapis": "^18.0.0",
     "http": "0.0.0",
     "lodash": "^4.6.1",
