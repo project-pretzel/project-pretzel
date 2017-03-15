@@ -49,4 +49,8 @@ CREATE TABLE messages (ID int NOT NULL, userID int NOT NULL, text TEXT, time DAT
 (schema.sql should do this for you, will end up removing these steps probably)
 
 mysql -u root < src/schema.sql (runs sql file)
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 00b4c893620a342991c854be5e3ee31ce98e1031
