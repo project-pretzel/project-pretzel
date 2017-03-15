@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-signin-client_id" content="791653946192-gial2vpbjr0pdtg6k90a9jrfja3c5mgl.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
     <!-- above meta tags for bootstrap-->
     <title>Pretzel</title>
     <link rel="stylesheet" href="css/freelancer.css">
@@ -16,47 +15,11 @@
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
   </head>
-  
-  <body id="page-top" class="index">
-    <nav id="mainNav" class="navbar navbar-default  navbar-custom affix-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#page-top">Project Pretzel</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="page-scroll">
-              <div class="g-signin2" data-onsuccess="onSignIn"> </div>
-              <a href="#" onclick="signOut();">Sign out</a>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
+  <body>  
     
     <div id="main"></div>
-    
     <script src="/js/bundle.js"></script>
-    <script> 
-      function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-      }
-
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
-      }
-    </script>
+    
   </body>
 </html> 
