@@ -17,7 +17,7 @@ $ npm test
 #### (not used anymore)
 ```shell
 $ babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled,server,spec --source-maps inline -w
-
+```
 
 #### use webpack instead of babel command
 ```shell
