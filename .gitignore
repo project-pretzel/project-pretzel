@@ -21,6 +21,7 @@ build/
 compiled/
 babel_cache/
 npm-debug.log
+src/static/js/bundle.js
 
 # Floobits
 .floo
