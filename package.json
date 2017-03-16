@@ -36,7 +36,7 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.8",
     "react-d3-library": "^1.1.7",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.3.2",
     "react-faux-dom": "^3.0.1",
     "react-google-login": "^2.8.2",
     "react-router": "^2.6.1",
@@ -62,6 +62,6 @@
     "request": "^2.81.0",
     "sinon": "^1.17.7",
     "sinon-server": "^0.1.1",
-    "webpack": "^2.2.1"
+    "webpack": "^1.13.3"
   }
 }
