@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/project-pretzel/project-pretzel#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.4.0",
