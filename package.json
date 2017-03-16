@@ -36,6 +36,7 @@
     "mysql": "^2.13.0",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.8",
+    "react-cellblock": "^2.0.0",
     "react-d3-library": "^1.1.7",
     "react-dom": "^15.3.2",
     "react-faux-dom": "^3.0.1",

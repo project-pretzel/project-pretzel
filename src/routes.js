@@ -9,8 +9,8 @@ import Chat from './components/Chat';
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={IndexPage}/>
-    <Route path="*" component={NotFoundPage}/>
     <Route path="/chat" component={Chat}/>
+    <Route path="*" component={NotFoundPage}/>
   </Route>
 );
 
