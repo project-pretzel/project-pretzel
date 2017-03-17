@@ -6,10 +6,14 @@ import ReactFauxDOM from 'react-faux-dom';
 import scale from 'd3-scale';
 import trends from '../data/trends';
 
-var counts = [];  
+console.log(trends)
+
+
+var counts = [];
 for (var i = trends.length; i > 0; i--) {
   counts.push(i);
 }
+
 
 export default class Word extends React.Component {
 
@@ -35,30 +39,30 @@ export default class Word extends React.Component {
         .value(function(d) {return d.size;})
          .sort(function(a, b) {
          return -(a.value - b.value)
-        }) 
+        })
         .padding(2);
         //between circles
 
   // generate data with calculated layout values
   const nodes = bubble.nodes(processData(json))
             .filter(function(d) { return !d.children; }); // filter out the outer bubble
- 
+
   const vis = svg1.selectAll('circle')
           .data(nodes)
           .text('blah')
           .style({
-            "fill":"white", 
+            "fill":"white",
             "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
             "font-size": "12px"})
           .on("click", function(d) { return zoom(focus == d ? root : d); });
           ;
   vis.transition()
       .duration(duration)
-      .delay(750) 
+      .delay(750)
       .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
       .attr('r', function(d) { return d.r; })
       .style('opacity', 1); // force to 1, so they don't get stuck below 1 at enter()
-  
+
   vis.enter().append('circle')
       .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
       .attr('r', function(d) { return d.r; })
@@ -67,7 +71,7 @@ export default class Word extends React.Component {
       .transition()
       .duration(duration * 1.2)
       .style('opacity', 1);
-          
+
 
   vis.enter().append('text')
         .attr("x", function(d){ return d.x; })
@@ -75,21 +79,21 @@ export default class Word extends React.Component {
         .attr("text-anchor", "middle")
         .text(function(d){ return d.name; })
         .style({
-            "fill":"white", 
+            "fill":"white",
             "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
             "font-size": "12px"
         });
 //  function drawBubbles(m) {
 
 
-    // assign new data to existing DOM 
+    // assign new data to existing DOM
     //var vis = svg.selectAll('circle')
     //  .data(nodes, function(d) { return d.name; });
 
     // enter data -> remove, so non-exist selections for upcoming data won't stay -> enter new data -> ...
 
-    // To chain transitions, 
-    // create the transition on the updating elements before the entering elements 
+    // To chain transitions,
+    // create the transition on the updating elements before the entering elements
     // because enter.append merges entering elements into the update selection
 
 
@@ -111,10 +115,10 @@ export default class Word extends React.Component {
   //     channel: channel,
   //     callback: function(m) {
   //       //ah too much data! I just reduce it to 1/10!
-  //       i++; 
+  //       i++;
   //       if(i === 1 || i%10 === 0) {
   //         drawBubbles(m);
-  //       }   
+  //       }
   //     }
   //   });
   // }
@@ -130,14 +134,9 @@ export default class Word extends React.Component {
 
 return(
       <div>
-        {svg.toReact()} 
+        {svg.toReact()}
       </div>
       )
 
   }
 };
-
-
-
-
-
