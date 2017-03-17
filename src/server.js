@@ -24,6 +24,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 app.use(bodyparser.json());
 
+app.use(function(req, res, next) {
+  res.setHeader('access-control-allow-origin', '*');
+  res.setHeader('access-control-allow-methods', 'POST, GET, OPTIONS');
+  res.setHeader('access-control-allow-headers', 'x-parse-application-id, x-parse-rest-api-key, Content-Type, Accept');
+
+  res.setHeader('Content-Type', 'application/json');
+  next();
+});
+
 
 app.get('/messages', controller.messages.get);
 app.post('/messages', controller.messages.post);

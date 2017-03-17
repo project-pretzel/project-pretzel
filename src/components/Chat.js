@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Log from './Log';
 import Word from './Word';
 import {Grid, Row, Column} from 'react-cellblock';
+import 'whatwg-fetch'
 
 
 export default class Chat extends React.Component {
@@ -16,6 +17,23 @@ export default class Chat extends React.Component {
 
   handleClick(){
     console.log(this.state.input)
+    //i want to post to database when clicked
+    fetch('http://127.0.0.1:3000/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: 'bob',
+        msgtext: this.state.input,
+      })
+    })
+    .then(function(resp){
+      console.log("post success", resp)
+    })
+    .catch(function(err){
+      console.log("error handlclick post", err)
+    })
   }
 
   handleChange(e){
