@@ -15,7 +15,7 @@ export default class Word extends React.Component {
 
  render() {
   var json = _.zipObject(trends, counts);
-//json is object where key is trends name and the count determines size and order
+//json is object where key is trends name and the count determines the inverse of size and order
   const diameter = 700;
   const color = d3.scale.category20b();
   const duration = 300;
@@ -45,19 +45,36 @@ export default class Word extends React.Component {
  
   const vis = svg1.selectAll('circle')
           .data(nodes)
-          .text('blah')
+   //       .text('blah')
           .style({
             "fill":"white", 
             "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
             "font-size": "12px"})
-          .on("click", function(d) { return zoom(focus == d ? root : d); });
-          ;
-  vis.transition()
-      .duration(duration)
-      .delay(750) 
-      .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-      .attr('r', function(d) { return d.r; })
-      .style('opacity', 1); // force to 1, so they don't get stuck below 1 at enter()
+       //   .on("click", function(d) { return zoom(focus == d ? root : d); });
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("click", function(d) {
+              this.handleClick(); // my react method
+            }.bind(this) )
+
+function handleClick(){
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+};
+
+function mouseover(){
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+};
+
+function mouseout(){
+  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+};
+
+  // vis.transition()
+  //     .duration(duration)
+  //     .delay(750) 
+  //     .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+  //     .attr('r', function(d) { return d.r; })
+  //     .style('opacity', 1); // force to 1, so they don't get stuck below 1 at enter()
   
   vis.enter().append('circle')
       .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
@@ -79,6 +96,15 @@ export default class Word extends React.Component {
             "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
             "font-size": "12px"
         });
+
+        function handleMouseOver(d, i) {  // Add interactivity
+
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "orange",
+              r: radius * 2
+            }); 
+        };         
 //  function drawBubbles(m) {
 
 
