@@ -6,21 +6,24 @@ export default class Log extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props.googleToken)
     this.state = {
-      gid: props.googleToken.data.sub || null,
-      email: props.googleToken.data.email || null,
-      givenName: props.googleToken.data.given_name || null ,
-      familyName: props.googleToken.data.family_name || null ,
-      imageUrl: props.googleToken.data.picture || null,
-      loggedIn: (props.googleToken) ? true : false 
+      loggedIn: false
     };
+
+    if(props.googleToken) {
+      this.state = {
+        gid: props.googleToken.data.sub,
+        email: props.googleToken.data.email,
+        givenName: props.googleToken.data.given_name,
+        familyName: props.googleToken.data.family_name,
+        imageUrl: props.googleToken.data.picture,
+        loggedIn: true 
+      };
+    }
     // This binding is necessary to make `this` work in the callback
   }
 
   responseGoogle(response){
-    
-    
     this.setState({
       gid: response.profileObj.googleId,
       email: response.profileObj.email,
@@ -29,13 +32,17 @@ export default class Log extends React.Component {
       imageUrl: response.profileObj.imageUrl,
       loggedIn: true
       });
+
     console.log(response);
     axios.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.tokenId}`)
     .then((googleToken) => {
-      console.log(googleToken);
       var jwt = googleToken;
       this.loginUser(jwt);
-      return true;
+      return googleToken;
+    })
+    .then((googleToken) => {
+      console.log('Promises, promises', googleToken);
+      axios.post('/users', JSON.stringify(googleToken));
     });
   }
 
@@ -46,8 +53,11 @@ export default class Log extends React.Component {
   }
 
   logoutUser() {
-    console.log('logged out');
     localStorage.removeItem("jwt");
+    this.setState({
+      loggedIn: false
+    });
+
   }
 
   render() {
@@ -60,7 +70,7 @@ export default class Log extends React.Component {
         onFailure={this.responseGoogle}
         />
         <div className='signout'> {this.state.loggedIn ? `Not ${this.state.givenName}?` : '' }</div>
-        <a className='pseudolink signout' onClick={this.logoutUser()}> {this.state.loggedIn ? `Click here to sign out.` : ''  }</a>
+        <a className='pseudolink signout' onClick={this.logoutUser.bind(this)}> {this.state.loggedIn ? `Click here to sign out.` : '' }</a>
       </div> 
     );
   }

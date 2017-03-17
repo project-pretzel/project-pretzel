@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Log from './Log';
 
 export default class Layout extends React.Component {
+  
   render() {
     var jwt = localStorage.getItem("jwt");
     //auth token should be saved as a JSON string, but just in case
