@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
   res.setHeader('access-control-allow-methods', 'POST, GET, OPTIONS');
   res.setHeader('access-control-allow-headers', 'x-parse-application-id, x-parse-rest-api-key, Content-Type, Accept');
 
-  res.setHeader('Content-Type', 'application/json');
+  //res.setHeader('Content-Type', 'application/json');
   next();
 });
 
@@ -41,11 +41,9 @@ app.post('/users', controller.users.post);
 
 // universal routing and rendering
 app.get('*', (req, res) => {
-  console.log("req.url", req.url)
   match(
     { routes: routes, location: req.url },
     (err, redirectLocation, renderProps) => {
-      console.log("renderProps", renderProps)
       // in case of error display the error message
       if (err) {
         return res.status(500).send(err.message);

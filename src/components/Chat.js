@@ -11,7 +11,8 @@ export default class Chat extends React.Component {
     super(props);
 
     this.state = {
-      input: ''
+      input: '',
+      messages: 'test'
     };
   }
 
@@ -34,10 +35,33 @@ export default class Chat extends React.Component {
     .catch(function(err){
       console.log("error handlclick post", err)
     })
+
+    this.renderMessages();
   }
 
   handleChange(e){
     this.setState({input: e.target.value})
+  }
+
+  renderMessages(){
+    console.log("rendermessages");
+    fetch('http://127.0.0.1:3000/messages')
+    .then(function(resp){
+      return resp.json()
+    }).then(function(json){
+      console.log("json", json);
+      for( var i = 0; i < json.length; i++){
+        console.log("json test", json[4])
+        this.setState({messages: 'jsontestset'})
+        .then(function(resp){
+          console.log("set finished", resp)
+        })
+        .catch(function(resp){
+          console.log("set failed", resp)
+        })
+      }
+      
+    })
   }
 
   render() {
@@ -51,6 +75,7 @@ export default class Chat extends React.Component {
             <input type="text" name="message" id="message" onChange={this.handleChange.bind(this)}/>
             <button value="submit" onClick={this.handleClick.bind(this)}>Submit</button>
           <div id="chats"></div>
+          {this.state.messages}
         </Column>
       </Grid>
     );
