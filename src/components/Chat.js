@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Log from './Log';
 import Word from './Word';
+import Message from './Message';
 import {Grid, Row, Column} from 'react-cellblock';
 import 'whatwg-fetch'
 
@@ -12,12 +13,11 @@ export default class Chat extends React.Component {
 
     this.state = {
       input: '',
-      messages: 'test'
+      messages: []
     };
   }
 
   handleClick(){
-    console.log(this.state.input)
     //i want to post to database when clicked
     fetch('http://127.0.0.1:3000/messages', {
       method: 'POST',
@@ -47,13 +47,14 @@ export default class Chat extends React.Component {
     fetch('http://127.0.0.1:3000/messages')
     .then(resp => {
       return resp.json()
-    }).then( json => {
+    })
+    .then(json => {
       console.log("json", json);
-      var output = '';
-      for( var i = 0; i < json.length; i++){
-        output += json[i].name + ": " + json[i].msgtext + "\n";
-      }
-      this.setState({messages: output})
+     
+      this.setState({messages: json})
+      // this.state.messages.map(function(item){
+      //   console.log("item", item)
+      // })
     })
   }
 
@@ -68,9 +69,15 @@ export default class Chat extends React.Component {
             <input type="text" name="message" id="message" onChange={this.handleChange.bind(this)}/>
             <button value="submit" onClick={this.handleClick.bind(this)}>Submit</button>
           <div id="chats"></div>
-          {this.state.messages}
+          {this.state.messages.map((message, i) => {
+            return <Message message={message} key={i}/>;
+          })}
         </Column>
       </Grid>
     );
   }
 }
+
+
+//problem is line 72. it seems to have a issue with passing in a object or something... which seems strange
+//this should map over the array that state.message is and print out each message in the consolelog in message.js
