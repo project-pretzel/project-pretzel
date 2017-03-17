@@ -28,7 +28,7 @@ export default class Word extends React.Component {
   const svg1 = d3.select(svg).append('svg')
           .attr('width', diameter)
           .attr('height', diameter)
-          .on('click', function(d, i){console.log('button clicked', d, i)});
+          .on('click', function(d){console.log('button clicked', d.name)});
 
 
   const bubble = d3.layout.pack()
@@ -50,26 +50,26 @@ export default class Word extends React.Component {
    //       .text('blah')
           .style({
             "fill":"white", 
-            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+            "font-family":'Carrois Gothic SC', sans-serif;,
             "font-size": "12px"})
        //   .on("click", function(d) { return zoom(focus == d ? root : d); });
             .on("mouseover", mouseover)
             .on("mouseout", mouseout)
-            .on("click", function(d) {
-              this.handleClick(); // my react method
-            }.bind(this) )
+            // .on("click", function(d) {
+            //   this.handleClick(); // my react method
+            // }.bind(this) )
 
-function handleClick(){
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-};
+// function handleClick(){
+//   console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+// };
 
-function mouseover(){
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-};
+// function mouseover(){
+//   console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+// };
 
-function mouseout(){
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-};
+// function mouseout(){
+//   console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+// };
 
   // vis.transition()
   //     .duration(duration)
