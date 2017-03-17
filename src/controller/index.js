@@ -26,10 +26,12 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.body.googleid, req.body.name, req.body.email, req.body.img];
+      //sub is the gid
+      //req.body.data is the google auth token
+
+      var params = [req.body.data.sub, req.body.data.name, req.body.data.email, req.body.data.picture];
       model.users.post(params, function(err, results) {
         if (err) { console.log("err users post", err);}
-        console.log(results);
         res.sendStatus(201);
       });
     }

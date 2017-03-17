@@ -12,7 +12,7 @@ export default class Log extends React.Component {
 
     if(props.googleToken) {
       this.state = {
-        gid: props.googleToken.data.sub,
+        gid: props.googleToken.data.sub, //sub is the gid
         email: props.googleToken.data.email,
         givenName: props.googleToken.data.given_name,
         familyName: props.googleToken.data.family_name,
@@ -42,7 +42,10 @@ export default class Log extends React.Component {
     })
     .then((googleToken) => {
       console.log('Promises, promises', googleToken);
-      axios.post('/users', JSON.stringify(googleToken));
+      axios.post('/users', googleToken).
+      then((response)=> {
+        console.log('SQL posted');
+      });
     });
   }
 

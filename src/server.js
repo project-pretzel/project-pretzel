@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes';
 import NotFoundPage from './components/NotFoundPage';
-import controller from './controller';
+import controller from './controller/index.js';
 import bodyparser from 'body-parser'
 import request from 'request';
 import parser from 'xml2json';
