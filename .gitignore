@@ -15,13 +15,13 @@ Icon
 .Spotlight-V100
 .Trashes
 node_modules/
-db/
 public/client/lib
 dist/
 build/
 compiled/
 babel_cache/
 npm-debug.log
+src/static/js/bundle.js
 
 # Floobits
 .floo
