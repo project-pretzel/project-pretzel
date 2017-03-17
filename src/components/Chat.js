@@ -30,13 +30,13 @@ export default class Chat extends React.Component {
       })
     })
     .then(function(resp){
-      console.log("post success", resp)
+      console.log("post success")
     })
     .catch(function(err){
       console.log("error handlclick post", err)
     })
 
-    this.renderMessages();
+    this.renderMessages.bind(this)();
   }
 
   handleChange(e){
@@ -44,23 +44,16 @@ export default class Chat extends React.Component {
   }
 
   renderMessages(){
-    console.log("rendermessages");
     fetch('http://127.0.0.1:3000/messages')
-    .then(function(resp){
+    .then(resp => {
       return resp.json()
-    }).then(function(json){
+    }).then( json => {
       console.log("json", json);
+      var output = '';
       for( var i = 0; i < json.length; i++){
-        console.log("json test", json[4])
-        this.setState({messages: 'jsontestset'})
-        .then(function(resp){
-          console.log("set finished", resp)
-        })
-        .catch(function(resp){
-          console.log("set failed", resp)
-        })
+        output += json[i].name + ": " + json[i].msgtext + "\n";
       }
-      
+      this.setState({messages: output})
     })
   }
 
