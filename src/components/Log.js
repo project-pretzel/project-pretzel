@@ -12,7 +12,7 @@ export default class Log extends React.Component {
 
     if(props.googleToken) {
       this.state = {
-        gid: props.googleToken.data.sub,
+        gid: props.googleToken.data.sub, //sub is the gid
         email: props.googleToken.data.email,
         givenName: props.googleToken.data.given_name,
         familyName: props.googleToken.data.family_name,
@@ -42,13 +42,17 @@ export default class Log extends React.Component {
     })
     .then((googleToken) => {
       console.log('Promises, promises', googleToken);
-      axios.post('/users', JSON.stringify(googleToken));
+      axios.post('/users', googleToken).
+      then((response)=> {
+        console.log('SQL posted');
+      });
     });
   }
 
   loginUser(jwt) {
     // We save the JWT in localStorage to keep the user authenticated. We’ll learn more about this later.
     localStorage.setItem("jwt", JSON.stringify(jwt));
+    console.log('This is for logging in');
     // Send the action to all stores through the Dispatcher
   }
 
@@ -65,7 +69,7 @@ export default class Log extends React.Component {
       <div>
         <GoogleLogin
         clientId="791653946192-gial2vpbjr0pdtg6k90a9jrfja3c5mgl.apps.googleusercontent.com"
-        buttonText={!(this.state.loggedIn) ? 'Login' : 'Hi, ' + this.state.givenName} 
+        buttonText={!(this.state.loggedIn) ? 'Login mutherfucker' : 'Hi, ' + this.state.givenName} 
         onSuccess={this.responseGoogle.bind(this)}
         onFailure={this.responseGoogle}
         />

@@ -1,9 +1,10 @@
-var db = require('../db');
+var db = require('../db/index.js');
 
 module.exports = {
 
   messages: {
     get: function (callback) {
+      console.log('hihihih');
       // fetch all messages
       // id , userid, msgtext, msgtime 
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
@@ -35,7 +36,6 @@ module.exports = {
     post: function (params, callback) {
       // create a user
       // expect params to be {googleid: '', name: '', email: '', img: ''}
-      console.log('>>>>>>>>>>>>>>>', params);
       var queryStr = 'insert into users(googleid, name, email, img) values (?, ?, ?, ?)';
       db.dbConnection.query(queryStr, params, function(err, results) {
         callback(err, results);

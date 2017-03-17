@@ -1,3 +1,5 @@
-const trends = ['Nikkis butt', 'Kims butt' ];
+import axios from 'axios';
+
+var trends = ['Nikkis butt', 'Kims butt' ];
 
 export default trends;
