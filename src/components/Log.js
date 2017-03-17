@@ -52,6 +52,7 @@ export default class Log extends React.Component {
   loginUser(jwt) {
     // We save the JWT in localStorage to keep the user authenticated. We’ll learn more about this later.
     localStorage.setItem("jwt", JSON.stringify(jwt));
+    console.log('This is for logging in');
     // Send the action to all stores through the Dispatcher
   }
 
@@ -68,7 +69,7 @@ export default class Log extends React.Component {
       <div>
         <GoogleLogin
         clientId="791653946192-gial2vpbjr0pdtg6k90a9jrfja3c5mgl.apps.googleusercontent.com"
-        buttonText={!(this.state.loggedIn) ? 'Login' : 'Hi, ' + this.state.givenName} 
+        buttonText={!(this.state.loggedIn) ? 'Login mutherfucker' : 'Hi, ' + this.state.givenName} 
         onSuccess={this.responseGoogle.bind(this)}
         onFailure={this.responseGoogle}
         />

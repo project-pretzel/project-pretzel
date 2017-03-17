@@ -4,6 +4,7 @@ module.exports = {
 
   messages: {
     get: function (callback) {
+      console.log('hihihih');
       // fetch all messages
       // id , userid, msgtext, msgtime 
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
