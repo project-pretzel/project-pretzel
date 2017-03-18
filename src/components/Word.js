@@ -46,7 +46,7 @@ export default class Word extends React.Component {
         .value(function(d) {return d.size;})
         .sort(function(a, b) {
          return -(a.value - b.value)
-        }) 
+        })
         .padding(2);
 
   // generate data with calculated layout values
@@ -72,13 +72,13 @@ export default class Word extends React.Component {
         //   this.setState({mouseOver: false});
         //   console.log(d.name);
         // });
-      
+ 
   vis.enter().append('text')
         .attr("x", function(d){ return d.x; })
         .attr("y", function(d){ return d.y + 5; })
         .attr("text-anchor", "middle")
         .text(function(d){ return d.name; })
-        .style({
+        .style(
             "fill":"white", 
             "font-family":"Oswald, sans-serif",
             "font-size": "16px"
@@ -97,14 +97,9 @@ export default class Word extends React.Component {
 
 return(
       <div>
-        {svg.toReact()} 
+        {svg.toReact()}
       </div>
       )
    };
 
 };
-
-
-
-
-

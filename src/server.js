@@ -12,6 +12,7 @@ import controller from './controller';
 import bodyparser from 'body-parser'
 import request from 'request';
 import parser from 'xml2json';
+import getTop20Trends from './data/trends.js';
 
 
 // initialize the server and configure support for ejs templates
@@ -19,6 +20,10 @@ const app = new Express();
 const server = new Server(app);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// getTop20Trends(function(err, response) {
+//   console.log(response);
+// })
 
 // define the folder that will be used for static assets
 app.use(Express.static(path.join(__dirname, 'static')));
@@ -69,24 +74,6 @@ app.get('/users', controller.users.get);
 app.post('/users', controller.users.post);
 
 
-request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
-  if (res.body) {
-    var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
-    var options = {
-      object: true,
-      sanitize: true,
-      trim: true
-    }
-    top20Trends.forEach(function(current, index) {
-      request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
-        var feed = parser.toJson(res.body, options);
-     //   console.dir(feed.rss);
-      });
-    });
-  } else {
-    console.error(res.error);
-  };
-});
 
 // start the server
 const port = process.env.PORT || 3000;
