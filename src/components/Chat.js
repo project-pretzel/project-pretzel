@@ -79,5 +79,5 @@ export default class Chat extends React.Component {
 }
 
 
-//problem is line 72. it seems to have a issue with passing in a object or something... which seems strange
+//problem is line "{this.state.messages.map...". it seems to have a issue with passing in a object or something... which seems strange
 //this should map over the array that state.message is and print out each message in the consolelog in message.js
