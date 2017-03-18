@@ -54,16 +54,22 @@ export default class Chat extends React.Component {
   }
 
   render() {
+    var style = {
+      border: 'solid #777',
+      padding: '3px 3px',
+      'background-color': 'rgba(144, 148, 156, 0.28)'
+    }
+
     return(
       <Grid>
-        <Column width="2/3">
+        <Column width="3/5">
           Search Results!
         </Column>
-        <Column width="1/3">
+        <Column width="2/5">
           <h4>Chat</h4>
             <input type="text" name="message" id="message" onChange={this.handleChange.bind(this)}/>
             <button value="submit" onClick={this.handleClick.bind(this)}>Submit</button>
-          <div id="chats">
+          <div id="chats" style={style}>
             {this.state.messages.map((message, i) => {
               return <Message message={message} key={i}/>;
             })}

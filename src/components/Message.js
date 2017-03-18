@@ -20,15 +20,24 @@ export default class Message extends React.Component {
     return month + '/' + day + '/' + year + ' at ' + hour + ':' + min;
   }
   render() {
+    var name = {
+      color: '#365899',
+      'padding-right': '10px'
+    }
+
+    var msgtext = {
+      
+    }
+    
+    var msgtime = {
+      'float': 'right',
+      'font-size': 'x-small'
+    }
+
     return (
       <div>
-        <div class="msg-name">
-          {this.props.message.name}
-        </div>
-        <div class="msg-text">
-          {this.props.message.msgtext}
-        </div>
-        <div class="msg-time">
+        <span style={name}> {this.props.message.name} </span><span style={msgtext}>{this.props.message.msgtext}</span>
+        <div style={msgtime}>
           {this.prettyDate(this.props.message.msgtime)}
         </div>
       </div>
