@@ -63,10 +63,11 @@ export default class Chat extends React.Component {
           <h4>Chat</h4>
             <input type="text" name="message" id="message" onChange={this.handleChange.bind(this)}/>
             <button value="submit" onClick={this.handleClick.bind(this)}>Submit</button>
-          <div id="chats"></div>
-          {this.state.messages.map((message, i) => {
-            return <Message message={message} key={i}/>;
-          })}
+          <div id="chats">
+            {this.state.messages.map((message, i) => {
+              return <Message message={message} key={i}/>;
+            })}
+          </div>
         </Column>
       </Grid>
     );
