@@ -78,7 +78,7 @@ export default class Word extends React.Component {
         .attr("y", function(d){ return d.y + 5; })
         .attr("text-anchor", "middle")
         .text(function(d){ return d.name; })
-        .style(
+        .style({
             "fill":"white", 
             "font-family":"Oswald, sans-serif",
             "font-size": "16px"
