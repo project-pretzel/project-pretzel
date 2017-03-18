@@ -1,3 +1,3 @@
-const trends = ['Nikkis butt', 'Kims butt', 'My butt', 'your butt', 'his butt', 'her butt' ];
+const trends = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
 
 export default trends;
