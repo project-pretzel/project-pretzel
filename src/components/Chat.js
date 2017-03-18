@@ -48,13 +48,8 @@ export default class Chat extends React.Component {
     .then(resp => {
       return resp.json()
     })
-    .then(json => {
-      console.log("json", json);
-     
+    .then(json => {     
       this.setState({messages: json})
-      // this.state.messages.map(function(item){
-      //   console.log("item", item)
-      // })
     })
   }
 
@@ -77,7 +72,3 @@ export default class Chat extends React.Component {
     );
   }
 }
-
-
-//problem is line "{this.state.messages.map...". it seems to have a issue with passing in a object or something... which seems strange
-//this should map over the array that state.message is and print out each message in the consolelog in message.js
