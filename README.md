@@ -15,13 +15,14 @@ $ npm test
 
 #### how to continuely complile when file changes
 #### (not used anymore)
+#### (we using this again for development)
 ```shell
-$ babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled,server,spec --source-maps inline -w
-```
+$ babel . --out-dir src/static/compiled --presets=es2015,react --ignore=node_modules,compiled,server,spec,babel_cache,webpack.config.js,src/static --source-maps inline -w
+
 
 #### use webpack instead of babel command
 ```shell
-$ NODE_ENV=production node_modules/.bin/webpack -p
+$ NODE_ENV=production node_modules/.bin/webpack --progress --watch
 ```
 
 #### used to run the server
@@ -31,7 +32,7 @@ $ NODE_ENV=production node_modules/.bin/babel-node --presets react,es2015 src/se
 
 #### steps to get nathan's updates working
 ```shell
-npm install --save-dev webpack@1.13.x babel-loader@6.2.x http-server@0.9.x
+npm install --save-dev webpack babel-loader@6.2.x http-server@0.9.x
 ```
 
 ###steps to get mysql working
