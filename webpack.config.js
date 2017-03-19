@@ -9,12 +9,23 @@ const config = {
   },
   module: {
     rules: [{
-      test: path.join(__dirname, 'src'),
+      test: /.jsx?$/,
       loader: 'babel-loader',
       options: {
         presets: ['react', 'es2015'] 
-      }
-    }]
+      },
+      include: path.join(__dirname, 'src'),
+    },
+    { 
+      test: /\.json$/, 
+      loader: 'json-loader' 
+    }
+  ]},
+   node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
   plugins: [
     new webpack.DefinePlugin({

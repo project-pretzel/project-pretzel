@@ -1,4 +1,4 @@
-var model = require('../model');
+import model from '../model';
 
 module.exports = {
 
