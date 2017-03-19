@@ -4,13 +4,28 @@ import d3 from 'd3';
 import lodash from 'lodash';
 import ReactFauxDOM from 'react-faux-dom';
 import scale from 'd3-scale';
-import trends from '../data/trends';
+import trends from '../data/trends.js';
 
 var counts = [];
 var topic= '';
+
+//This is breaking the code for some reason.  The error is:
+/**** 
+
+/home/nathan/hackreactor/project-pretzel/src/components/Word.js:45
+for (var i = _trends2.default.length + 10; i > 10; i--) {                             ^
+
+TypeError: Cannot read property 'length' of undefined at Object.<anonymous> 
+(/home/nathan/hackreactor/project-pretzel/src/components/Word.js:11:14)
+*****/
+/*for (var i = trends.length+10; i > 10; i--) {
+  counts.push(i);
+}*/
+
 for (var i = trends.length+10; i > 10; i--) {
   counts.push(i);
 }
+//TEMP FIX
 
 export default class Word extends React.Component {
   getInitialState() {
@@ -78,7 +93,7 @@ export default class Word extends React.Component {
         .attr("y", function(d){ return d.y + 5; })
         .attr("text-anchor", "middle")
         .text(function(d){ return d.name; })
-        .style(
+        .style({
             "fill":"white", 
             "font-family":"Oswald, sans-serif",
             "font-size": "16px"

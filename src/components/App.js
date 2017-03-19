@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render() {
     return(
       <div>
-      <Link to="/test"> Click me </Link>
+      <Link to="/test"> Click me? </Link>
         <Word />
       </div>
     );
