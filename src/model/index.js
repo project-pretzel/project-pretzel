@@ -4,20 +4,13 @@ module.exports = {
 
   results: {
     get: function (callback) {
-      // fetch all results
-      // id , userid, msgtext, msgtime 
-      var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
-                      from messages left outer join users on (messages.userid = users.id) \
-                      order by messages.id desc';
-      db.dbConnection.query(queryStr, function(err, results) {
-        callback(err, results);
-      });
+      
     },
     post: function (params, callback) {
       // post google api results into results table
-      // expect params to be {name(from users): '', msgtext: ''}
-      var queryStr = 'insert into messages(userid, msgtext, msgtime) \
-                      values ((select id from users where name = ? limit 1), ?, now())';
+      // expect params to be [maintitle: '', title: '', link: '', pubdate: '', description: '']
+      var queryStr = 'insert into resultsItems(maintitle, title, link, pubdate, description) \
+                      values (?, ?, ?, ?, ?)';
       db.dbConnection.query(queryStr, params, function(err, results) {
         callback(err, results);
       });

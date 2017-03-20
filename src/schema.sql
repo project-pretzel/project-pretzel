@@ -27,11 +27,11 @@ CREATE TABLE messages (
 
 CREATE TABLE resultsItems (
   id INT NOT NULL AUTO_INCREMENT,
-  maintitle TEXT
+  maintitle TEXT,
   title TEXT,
   link TEXT,
   pubdate TEXT,
-  description TEXT
+  description TEXT,
   PRIMARY KEY (id)
 );
 

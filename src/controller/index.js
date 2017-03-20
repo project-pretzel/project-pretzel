@@ -10,12 +10,12 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.boby.maintitle, req.body.title, req.body.link, req.body.pubdate, req.body.description];
-      model.messages.post(params, function(err, results) {
+      console.log("req.body", req.body)
+      var params = [req.body.maintitle, req.body.title, req.body.link, req.body.pubdate, req.body.description];
+      model.results.post(params, function(err, results) {
         if (err) { console.log("err results post", err);}
         res.sendStatus(201);
       });
-      res.sendStatus(201)
     }
   },
 

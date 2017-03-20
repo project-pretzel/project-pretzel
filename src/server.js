@@ -92,22 +92,22 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
 
           //////////////////////////////////
           //some reason this post isnt working but postman does
-          request({
-            method: 'POST',
-            uri: 'http://127.0.0.1:3000/results',
-            multipart: [
-              {
-                'content-type': 'application/json',
-                body: JSON.stringify(feed.rss)
-              },
-              { body: 'I am an attachment' }
-            ]
-          },
-          function (error, response, body) {
-            if (error) {
-              return console.error('top20trends post failed:', error);
-            }
-          })
+          // request({
+          //   method: 'POST',
+          //   uri: 'http://127.0.0.1:3000/results',
+          //   multipart: [
+          //     {
+          //       'content-type': 'application/json',
+          //       body: JSON.stringify(feed.rss)
+          //     },
+          //     { body: 'I am an attachment' }
+          //   ]
+          // },
+          // function (error, response, body) {
+          //   if (error) {
+          //     return console.error('top20trends post failed:', error);
+          //   }
+          // })
           
         }
       });
