@@ -39,8 +39,3 @@ export default trends;
 //     console.error(res.error);
 //   };
 // });
-
-
-// const trends = ['Nikkis butt', 'Kims butt'];
-//
-// export default trends;
