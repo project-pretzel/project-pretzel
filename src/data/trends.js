@@ -5,19 +5,16 @@ var trends = ['Nikkis butt', 'Kims butt' ]; //need a default value I think or th
 var request = require('request');
 var parser = require('xml2json');
 var getTop20Trends = function(callback) {
-  request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(err, response) {
+  request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(err, response, body) {
     if (err) {
       callback(err, null);
     } else {
-      var data = JSON.parse(response.body).united_states;
+      data = JSON.parse(response.body).united_states;
       callback(null, data);
     }
   });
 };
 
-var trends = getTop20Trends(function(err, response) {
-  return response;
-});
 
 export default trends;
 
