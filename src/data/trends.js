@@ -18,6 +18,8 @@ var getTop20Trends = function(callback) {
 
 export default trends;
 
+// this function get's the top 10 rss stories from google news.
+
 // request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res) {
 //   if (res.body) {
 //     var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
