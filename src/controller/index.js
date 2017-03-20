@@ -1,4 +1,4 @@
-var model = require('../model');
+import model from '../model';
 
 module.exports = {
 
@@ -26,8 +26,10 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      //googleid is called sub
-      var params = [req.body.sub, req.body.name, req.body.email, req.body.picture];
+      //sub is the gid
+      //req.body.data is the google auth token
+
+      var params = [req.body.data.sub, req.body.data.name, req.body.data.email, req.body.data.picture];
       model.users.post(params, function(err, results) {
         if (err) { console.log("err users post", err);}
         res.sendStatus(201);

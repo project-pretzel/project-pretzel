@@ -41,7 +41,6 @@ export default class Log extends React.Component {
       loggedIn: true
       });
 
-    
     axios.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.tokenId}`)
     .then((googleToken) => {
       var jwt = googleToken;
@@ -83,6 +82,7 @@ export default class Log extends React.Component {
         />
         <div className='signout'> {this.state.loggedIn ? `Not ${this.state.givenName}?` : '' }</div>
         <a id='signout' onClick={this.logoutUser.bind(this)}> {this.state.loggedIn ? `Click here to sign out.` : '' }</a>
+
       </div> 
     );
   }
