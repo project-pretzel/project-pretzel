@@ -24,6 +24,24 @@ export default class Chat extends React.Component {
   }
 
   handleClick(){
+    var jwt = localStorage.getItem("jwt");
+    var username = 'Anonymous';
+    //auth token should be saved as a JSON string, but just in case
+    try {
+      var googleToken = JSON.parse(jwt); //pass the googleToken to the log component to parse
+    } catch(e) {
+      alert(e); // error in the above string (in this case, yes)!
+    } 
+
+    this.state = {
+      loggedIn: false
+    };
+
+    if(googleToken) {
+      username = googleToken.data.given_name;
+    }
+      
+     
     //i want to post to database when clicked
     fetch('http://127.0.0.1:3000/messages', {
       method: 'POST',
@@ -32,7 +50,7 @@ export default class Chat extends React.Component {
       },
       body: JSON.stringify({
         maintitle: this.findPath(this.props.location.pathname),
-        username: 'bob',
+        username: username,
         msgtext: this.state.input,
       })
     })

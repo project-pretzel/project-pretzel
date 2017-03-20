@@ -16996,7 +16996,7 @@ var Word = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Word.__proto__ || Object.getPrototypeOf(Word)).call(this, props));
 
     _this.state = {
-      trends: ['Pretzel', 'is', 'loading', '...']
+      trends: []
     };
     fetch('http://127.0.0.1:3000/trends', {
       method: 'GET',
@@ -17096,7 +17096,9 @@ var Word = function (_React$Component) {
       }).style({
         "fill": "white",
         "font-family": "Oswald, sans-serif",
-        "font-size": "16px"
+        "font-size": "16px",
+        "width": "20px",
+        "word-wrap": "break-word"
       }).on('click', function (d) {
         handleClick(d);
       });
@@ -30294,12 +30296,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Word2.default, null),
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { to: '/test' },
-          ' This is a test '
-        )
+        _react2.default.createElement(_Word2.default, null)
       );
     }
   }]);
@@ -30369,6 +30366,12 @@ var Chat = function (_React$Component) {
   }
 
   _createClass(Chat, [{
+    key: 'findPath',
+    value: function findPath(ugly) {
+      var uglyArr = ugly.split('/');
+      return uglyArr[uglyArr.length - 1];
+    }
+  }, {
     key: 'handleClick',
     value: function handleClick() {
       //i want to post to database when clicked
@@ -30378,6 +30381,7 @@ var Chat = function (_React$Component) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          maintitle: this.findPath(this.props.location.pathname),
           username: 'bob',
           msgtext: this.state.input
         })

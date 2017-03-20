@@ -33,7 +33,7 @@ export default class Word extends React.Component {
     super(props);
 
     this.state = {
-      trends: ['Pretzel', 'is', 'loading', '...']
+      trends: []
     };
     fetch('http://127.0.0.1:3000/trends', {
       method: 'GET',
@@ -129,7 +129,9 @@ export default class Word extends React.Component {
         .style({
             "fill":"white", 
             "font-family":"Oswald, sans-serif",
-            "font-size": "16px"
+            "font-size": "16px",
+            "width": "20px",
+            "word-wrap": "break-word"
         })
         .on('click', (d) => {
           handleClick(d)
