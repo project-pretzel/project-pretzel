@@ -9,7 +9,6 @@ export default class App extends React.Component {
     return(
       <div>
         <Word />
-        <Link to='/chat'> click this to go to chat (testing) </Link>
       </div>
     );
   }
