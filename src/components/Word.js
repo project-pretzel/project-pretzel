@@ -4,13 +4,10 @@ import d3 from 'd3';
 import lodash from 'lodash';
 import ReactFauxDOM from 'react-faux-dom';
 import scale from 'd3-scale';
-import trends from '../data/trends.js';
 import {browserHistory} from 'react-router';
-
 
 var counts = [];
 var topic= '';
-
 //This is breaking the code for some reason.  The error is:
 /**** 
 
@@ -31,17 +28,42 @@ for (var i = 30; i > 10; i--) {
 //TEMP FIX
 
 export default class Word extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      trends: ['Pretzel', 'is', 'loading', '...']
+    };
+    fetch('http://127.0.0.1:3000/trends', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(function(resp){
+      return resp.json();
+    })
+    .catch(function(err){
+      console.log("error handlclick post", err)
+    })
+    .then(trends => {
+      this.setState({trends: trends.united_states});
+      console.log('Word.js @ line 53', this.state.trends);
+      this.renderCircles();
+    })
+  }
+
   getInitialState() {
     return {
       mouseOver: false
     };
   };
 
- render() {
-  
-  var mouseOver = this.state;
+  renderCircles() {
+    var mouseOver = this.state;
   //var self = this;
-  var json = _.zipObject(trends, counts);
+  var json = _.zipObject(this.state.trends, counts);
 //json is object where key is trends name and the count determines the inverse of size and order
   const diameter = 650;
   const color2 = d3.scale.category20c();
@@ -122,10 +144,13 @@ export default class Word extends React.Component {
     }
     return {children: newDataSet};
   }
+  return svg;
+  }
 
-return(
+ render() {
+  var svg = this.renderCircles();
+  return(
       <div>
-
         {svg.toReact()}
       </div>
       )

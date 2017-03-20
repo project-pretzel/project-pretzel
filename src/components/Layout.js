@@ -5,15 +5,7 @@ import Log from './Log';
 
 export default class Layout extends React.Component {
   
-  render() {
-    var jwt = localStorage.getItem("jwt");
-    //auth token should be saved as a JSON string, but just in case
-    try {
-      var googleToken = JSON.parse(jwt); //pass the googleToken to the log component to parse
-    } catch(e) {
-      alert(e); // error in the above string (in this case, yes)!
-    } 
-    
+  render() { 
     
     return (
     <div>
@@ -25,7 +17,7 @@ export default class Layout extends React.Component {
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
               <li className="page-scroll">
-                <Log googleToken={googleToken}/>
+                <Log googleToken/>
               </li>
             </ul>
           </div>
