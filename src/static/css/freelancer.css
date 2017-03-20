@@ -9,7 +9,6 @@ body {
 }
 
 #chats {
-    width: 500px;
     margin: auto;
     text-align: left;
     background: white;
@@ -79,8 +78,6 @@ hr.star-primary:after {
 }
 header {
   text-align: center;
-  background: white;
-  color: white;
 }
 header .container {
   padding-top: 100px;
