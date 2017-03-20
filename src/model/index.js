@@ -6,7 +6,7 @@ module.exports = {
     get: function (callback) {
       // fetch all results
       // id, maintitle, title, link, pubdate, description
-      var queryStr = 'select * resultsItems'; //need to change this to get just items that match main title.
+      var queryStr = 'select * from resultsItems'; //need to change this to get just items that match main title.
       db.dbConnection.query(queryStr, function(err, results) {
         callback(err, results);
       });
