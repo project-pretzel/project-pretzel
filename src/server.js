@@ -77,56 +77,57 @@ app.get('*', (req, res) => {
   );
 });
 
-request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res, data) {
-  if (res.body) {
-    var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
-    var options = {
-      object: true,
-      sanitize: true,
-      trim: true
-    }
+app.get('/trends', (req, res) => {
+  console.log('>>>>>>>>>>>>>>trends request');
+  request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(req, res, data) {
+    if (res.body) {
+      var top20Trends = JSON.parse(res.body).united_states; // getting top 20 US google trends
+      var options = {
+        object: true,
+        sanitize: true,
+        trim: true
+      };
+      res.send(top20Trends);
 
-    /*top20Trends.forEach(function(current, index) {
-      request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
-        var feed = parser.toJson(res.body, options);
-        if(index === 2) {
-          //console.dir(feed.rss);
-          //console.dir(feed.rss.channel.item);
+      /*top20Trends.forEach(function(current, index) {
+        request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
+          var feed = parser.toJson(res.body, options);
+          if(index === 2) {
+            //console.dir(feed.rss);
+            //console.dir(feed.rss.channel.item);
 
-          //////////////////////////////////
-          //some reason this post isnt working but postman does
-          // request({
-          //   method: 'POST',
-          //   uri: 'http://127.0.0.1:3000/results',
-          //   multipart: [
-          //     {
-          //       'content-type': 'application/json',
-          //       body: JSON.stringify(feed.rss)
-          //     },
-          //     { body: 'I am an attachment' }
-          //   ]
-          // },
-          // function (error, response, body) {
-          //   if (error) {
-          //     return console.error('top20trends post failed:', error);
-          //   }
-          // }
-        }
+            //////////////////////////////////
+            //some reason this post isnt working but postman does
+            // request({
+            //   method: 'POST',
+            //   uri: 'http://127.0.0.1:3000/results',
+            //   multipart: [
+            //     {
+            //       'content-type': 'application/json',
+            //       body: JSON.stringify(feed.rss)
+            //     },
+            //     { body: 'I am an attachment' }
+            //   ]
+            // },
+            // function (error, response, body) {
+            //   if (error) {
+            //     return console.error('top20trends post failed:', error);
+            //   }
+            // }
+          }
 
-      });
-    })*/;
-  } else {
-    console.error(res.error);
-  };
+        });
+      })*/;
+    } else {
+      console.error(res.error);
+    };
+  });  
 });
 
 
 
+
 //server requests for user/message sql db queries
-app.get('/messages', controller.messages.get);
-app.post('/messages', controller.messages.post);
-app.get('/users', controller.users.get);
-app.post('/users', controller.users.post);
 
 // start the server
 const port = process.env.PORT || 3000;
