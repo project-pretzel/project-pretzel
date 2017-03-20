@@ -4,7 +4,12 @@ module.exports = {
 
   results: {
     get: function (callback) {
-      
+      // fetch all results
+      // id, maintitle, title, link, pubdate, description
+      var queryStr = 'select * resultsItems'; //need to change this to get just items that match main title.
+      db.dbConnection.query(queryStr, function(err, results) {
+        callback(err, results);
+      });
     },
     post: function (params, callback) {
       // post google api results into results table
@@ -29,6 +34,7 @@ module.exports = {
       });
     },
     post: function (params, callback) {
+      console.log("params", params)
       // create a message for a user id based on the given username
       // expect params to be {name(from users): '', msgtext: ''}
       var queryStr = 'insert into messages(userid, msgtext, msgtime) \
