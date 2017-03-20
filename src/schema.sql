@@ -18,6 +18,7 @@ CREATE TABLE users (
 CREATE TABLE messages (
   id INT NOT NULL AUTO_INCREMENT, 
   userid INT NOT NULL, 
+  maintitle TEXT,
   msgtext TEXT, 
   msgtime DATETIME, 
   PRIMARY KEY (id), 
@@ -49,8 +50,3 @@ CREATE TABLE resultsItems (
 --   PRIMARY KEY (results_id),
 --   PRIMARY KEY (resultsItems_id)
 -- );
-
-CREATE TABLE trends (
-  id int NOT NULL AUTO_INCREMENT,
-  trend TEXT
-)

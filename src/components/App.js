@@ -13,7 +13,6 @@ export default class App extends React.Component {
     return(
       <div>
         <Word />
-        <Link to='/test'> This is a test </Link>
       </div>
     );
   }

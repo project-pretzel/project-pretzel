@@ -18,6 +18,11 @@ export default class Chat extends React.Component {
     };
   }
 
+  findPath(ugly){
+    var uglyArr = ugly.split('/');
+    return uglyArr[uglyArr.length - 1]
+  }
+
   handleClick(){
     //i want to post to database when clicked
     fetch('http://127.0.0.1:3000/messages', {
@@ -26,6 +31,7 @@ export default class Chat extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        maintitle: this.findPath(this.props.location.pathname),
         username: 'bob',
         msgtext: this.state.input,
       })
