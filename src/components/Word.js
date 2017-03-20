@@ -5,6 +5,8 @@ import lodash from 'lodash';
 import ReactFauxDOM from 'react-faux-dom';
 import scale from 'd3-scale';
 import trends from '../data/trends.js';
+import {browserHistory} from 'react-router';
+
 
 var counts = [];
 var topic= '';
@@ -22,9 +24,10 @@ TypeError: Cannot read property 'length' of undefined at Object.<anonymous>
   counts.push(i);
 }*/
 
-for (var i = trends.length+10; i > 10; i--) {
+for (var i = 30; i > 10; i--) {
   counts.push(i);
 }
+
 //TEMP FIX
 
 export default class Word extends React.Component {
@@ -70,6 +73,12 @@ export default class Word extends React.Component {
  
   const vis = svg1.selectAll('circle')
         .data(nodes)
+
+  function handleClick(d) {
+    topic = d.name; 
+    
+    browserHistory.push(`/chat/${topic}`);
+  }
   
   vis.enter().append('circle')
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
@@ -78,7 +87,9 @@ export default class Word extends React.Component {
         .attr('class', function(d) { return d.className; })
  //     .attr('fill', (d) => mouseOver ? color2(d.value) : color(d.value))
         .attr('fill', (d) => color(d.value))
-        .on('click', (d) => {topic = d.name; console.log('click', d.name)})
+        .on('click', (d) => {
+          handleClick(d)
+        });
         // .on('mouseover', (d) => {
         //   this.setState({mouseOver: true});
         //   console.log(d.name);
@@ -98,7 +109,9 @@ export default class Word extends React.Component {
             "font-family":"Oswald, sans-serif",
             "font-size": "16px"
         })
-        .on('click', (d) => {topic = d.name; console.log('click', d.name)});
+        .on('click', (d) => {
+          handleClick(d)
+        });
 
   function processData(data) {
     const obj = data;
