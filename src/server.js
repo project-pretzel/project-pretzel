@@ -45,53 +45,35 @@ app.post('/users', controller.users.post);
 app.post('/results', controller.results.post);
 app.get('/results', controller.results.get);
 
-app.get('/trends', (req, res) => {  
+app.get('/rss', (req, res) => {
+  var options = {
+    object: true,
+    sanitize: true,
+    trim: true
+  };
+  request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
+    if (res.body) {
+      console.log(res.body)
+      res.send(res.body);
+      // return parser.toJson(res.body, options);
+    } else {
+      console.error(req);
+    }
+  });
+});
+
+app.get('/trends', (req, res) => {
   console.log('i got a request');
   request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(request, response, data) {
     if (response.body) {
       var top20Trends = JSON.parse(response.body).united_states; // getting top 20 US google trends
       console.log(top20Trends);
       res.send(response.body);
-
-      /*top20Trends.forEach(function(current, index) {
-          var options = {
-            object: true,
-            sanitize: true,
-            trim: true
-          };
-        request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
-          var feed = parser.toJson(res.body, options);
-          if(index === 2) {
-            //console.dir(feed.rss);
-            //console.dir(feed.rss.channel.item);
-
-            //////////////////////////////////
-            //some reason this post isnt working but postman does
-            // request({
-            //   method: 'POST',
-            //   uri: 'http://127.0.0.1:3000/results',
-            //   multipart: [
-            //     {
-            //       'content-type': 'application/json',
-            //       body: JSON.stringify(feed.rss)
-            //     },
-            //     { body: 'I am an attachment' }
-            //   ]
-            // },
-            // function (error, response, body) {
-            //   if (error) {
-            //     return console.error('top20trends post failed:', error);
-            //   }
-            // }
-          }
-
-        });
-      })*/
     } else {
       console.error(res.error);
       res.status(500);
     };
-  });  
+  });
 });
 
 

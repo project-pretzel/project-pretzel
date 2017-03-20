@@ -9,12 +9,12 @@ import {browserHistory} from 'react-router';
 var counts = [];
 var topic= '';
 //This is breaking the code for some reason.  The error is:
-/**** 
+/****
 
 /home/nathan/hackreactor/project-pretzel/src/components/Word.js:45
 for (var i = _trends2.default.length + 10; i > 10; i--) {                             ^
 
-TypeError: Cannot read property 'length' of undefined at Object.<anonymous> 
+TypeError: Cannot read property 'length' of undefined at Object.<anonymous>
 (/home/nathan/hackreactor/project-pretzel/src/components/Word.js:11:14)
 *****/
 /*for (var i = trends.length+10; i > 10; i--) {
@@ -33,7 +33,7 @@ export default class Word extends React.Component {
     super(props);
 
     this.state = {
-      trends: ['Pretzel', 'is', 'loading', '...']
+      trends: []
     };
     fetch('http://127.0.0.1:3000/trends', {
       method: 'GET',
@@ -92,16 +92,16 @@ export default class Word extends React.Component {
   // generate data with calculated layout values
   const nodes = bubble.nodes(processData(json))
         .filter(function(d) { return !d.children; }); // filter out the outer bubble
- 
+
   const vis = svg1.selectAll('circle')
         .data(nodes)
 
   function handleClick(d) {
-    topic = d.name; 
-    
+    topic = d.name;
+
     browserHistory.push(`/chat/${topic}`);
   }
-  
+
   vis.enter().append('circle')
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
         .attr('r', function(d) { return d.r; })
@@ -127,7 +127,7 @@ export default class Word extends React.Component {
         .attr("text-anchor", "middle")
         .text(function(d){ return d.name; })
         .style({
-            "fill":"white", 
+            "fill":"white",
             "font-family":"Oswald, sans-serif",
             "font-size": "16px"
         })
