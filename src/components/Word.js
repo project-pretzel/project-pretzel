@@ -1,82 +1,78 @@
 import React from 'react';
 //import rd3 from 'react-d3-library';
 import d3 from 'd3';
+import lodash from 'lodash';
 import ReactFauxDOM from 'react-faux-dom';
 import scale from 'd3-scale';
+import trends from '../data/trends';
 
-// export default class Word extends React.Component {
-//   render() {
-//     return (
-//       <header>
-//          <div>
-//             <div class="container" id="WordMap" tabindex="-1">
-//               <div class="">
-//                 <div class="col-lg-12">
-//                   <div class="intro-text">
-//                     <h1 class="name">WORD MAP GOES HERE</h1>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//       </header>
-//     );
-//   }
-// }
+var counts = [];
+var topic= '';
+for (var i = trends.length+10; i > 10; i--) {
+  counts.push(i);
+}
 
 export default class Word extends React.Component {
-  // constructor(trends) {
-  //   super(trends);    // This binding is necessary to make `this` work in the callback
-  // }
+  getInitialState() {
+    return {
+      mouseOver: false
+    };
+  };
 
  render() {
-
-
-  var json = {
-    "Tenth": 1, "Nineth": 2, "Eighth": 3, "Seventh": 4, "Sixth": 5, "Fifth": 6, "Fourth": 7, "Third": 8, "Second": 9, "First": 10};
   
-  const diameter = 700;
+  var mouseOver = this.state;
+  //var self = this;
+  var json = _.zipObject(trends, counts);
+//json is object where key is trends name and the count determines the inverse of size and order
+  const diameter = 650;
+  const color2 = d3.scale.category20c();
   const color = d3.scale.category20b();
+  const duration = 300;
+  const delay = 0;
 
   const svg = ReactFauxDOM.createElement('svg')
     svg.style.setProperty('width', 700);
     svg.style.setProperty('background-color', 'white');
     svg.style.setProperty('height', 700);
+
   const svg1 = d3.select(svg).append('svg')
-          .attr('width', diameter)
-          .attr('height', diameter)
-          .on('click', function(d, i){console.log('button clicked', d, i)});
+        .attr('width', diameter)
+        .attr('height', diameter)
 
   const bubble = d3.layout.pack()
         //.sort(null)
         .size([diameter, diameter])
         .value(function(d) {return d.size;})
-         .sort(function(a, b) {
+        .sort(function(a, b) {
          return -(a.value - b.value)
         }) 
         .padding(2);
-        
-        //between circles
 
   // generate data with calculated layout values
   const nodes = bubble.nodes(processData(json))
-            .filter(function(d) { return !d.children; }); // filter out the outer bubble
+        .filter(function(d) { return !d.children; }); // filter out the outer bubble
  
   const vis = svg1.selectAll('circle')
-          .data(nodes)
-          .text('blah')
-          .style({
-            "fill":"white", 
-            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-            "font-size": "12px"
-        });
+        .data(nodes)
   
   vis.enter().append('circle')
-      .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-      .attr('r', function(d) { return d.r; })
-      .attr('class', function(d) { return d.className; })
-      .style("fill", function(d) { return color(d.value); });
-
+        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+        .attr('r', function(d) { return d.r; })
+     //   .attr('r', (d) => mouseOver ? (d.r)*2 : d.r)
+        .attr('class', function(d) { return d.className; })
+ //     .attr('fill', (d) => mouseOver ? color2(d.value) : color(d.value))
+        .attr('fill', (d) => color(d.value))
+        .on('click', (d) => {topic = d.name; console.log('click', d.name)})
+        // .on('mouseover', (d) => {
+        //   this.setState({mouseOver: true});
+        //   console.log(d.name);
+        // })
+        // .on('mouseout', (d) => {
+        //   this.setState({mouseOver: false});
+        //   console.log(d.name);
+        // });
+      
   vis.enter().append('text')
         .attr("x", function(d){ return d.x; })
         .attr("y", function(d){ return d.y + 5; })
@@ -84,27 +80,27 @@ export default class Word extends React.Component {
         .text(function(d){ return d.name; })
         .style({
             "fill":"white", 
-            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-            "font-size": "12px"
-        });
+            "font-family":"Oswald, sans-serif",
+            "font-size": "16px"
+        })
+        .on('click', (d) => {topic = d.name; console.log('click', d.name)});
 
   function processData(data) {
     const obj = data;
-
     const newDataSet = [];
 
     for(var prop in obj) {
-      newDataSet.push({name: prop, className: prop.toLowerCase(), size: obj[prop]});
+      newDataSet.push({name: prop.toUpperCase(), className: prop.toLowerCase(), size: obj[prop]});
     }
     return {children: newDataSet};
   }
 
 return(
-      <div> 
-        {svg.toReact()}
-      }
+      <div>
+        {svg.toReact()} 
       </div>
       )
+   };
 
-  }
 };
+

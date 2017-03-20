@@ -88,7 +88,6 @@ request.get('https://trends.google.com/trends/hottrends/visualize/internal/data'
     top20Trends.forEach(function(current, index) {
       request.get('https://news.google.com/news?cf=all&hl=en&pz=1&&q='+ current +'&ned=us&output=rss', function(req, res) {
         var feed = parser.toJson(res.body, options);
-        //console.dir(feed.rss);
       });
     });
   } else {
