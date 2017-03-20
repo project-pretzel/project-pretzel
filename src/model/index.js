@@ -22,20 +22,21 @@ module.exports = {
   },
 
   messages: {
-    get: function (callback) {
+    get: function (params, callback) {
       // fetch all messages
       // id , userid, msgtext, msgtime
+      console.log("params", params)
+
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
                       from messages left outer join users on (messages.userid = users.id) \
-                      order by messages.id desc';
-      db.dbConnection.query(queryStr, function(err, results) {
+                      where messages.maintitle = ? order by messages.id desc;';
+      db.dbConnection.query(queryStr, params, function(err, results) {
         callback(err, results);
       });
     },
     post: function (params, callback) {
       // create a message for a user id based on the given username
       // expect params to be {maintitle: '', name(from users): '', msgtext: ''}
-      console.log("params", params)
       var queryStr = 'insert into messages(userid, maintitle, msgtext, msgtime) \
                       values ((select id from users where name = ? limit 1), ?, ?, now())';
       db.dbConnection.query(queryStr, params, function(err, results) {

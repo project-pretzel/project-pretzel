@@ -10,7 +10,7 @@ import 'whatwg-fetch'
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
-console.log("props", props.location.pathname)
+
     this.state = {
       input: '',
       messages: [],
