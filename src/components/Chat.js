@@ -4,7 +4,8 @@ import Log from './Log';
 import Word from './Word';
 import Message from './Message';
 import {Grid, Row, Column} from 'react-cellblock';
-import 'whatwg-fetch'
+import 'whatwg-fetch';
+import $ from 'jQuery';
 
 
 export default class Chat extends React.Component {
@@ -73,14 +74,21 @@ export default class Chat extends React.Component {
     .then(resp => {
       return resp.json()
     })
-    .then(json => {     
+    .then(json => {
       this.setState({messages: json})
     })
   }
 
   renderSearch(){
-    
-  }
+    fetch('http://127.0.0.1:3000/rss')
+    .then(res => {
+      console.log(res.json())
+      return res.json();
+    })
+    .then(json => {
+      this.setState({results: json})
+    })
+  };
 
   render() {
     var style = {
@@ -93,8 +101,11 @@ export default class Chat extends React.Component {
       <Grid>
         <Column width="3/5">
           <h4>Results</h4>
-          <div id="results">
+          <div id="results" style={style}>
             Search Results!
+            {this.state.results.map((result, i) => {
+              return <Results result={result} key={i}/>;
+            })}
           </div>
         </Column>
         <Column width="2/5">
