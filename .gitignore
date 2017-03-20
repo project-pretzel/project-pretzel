@@ -21,6 +21,7 @@ build/
 babel_cache/
 npm-debug.log
 src/static/js
+project-pretzel.pem
 
 # Floobits
 .floo

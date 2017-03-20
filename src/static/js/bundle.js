@@ -17096,7 +17096,9 @@ var Word = function (_React$Component) {
       }).style({
         "fill": "white",
         "font-family": "Oswald, sans-serif",
-        "font-size": "16px"
+        "font-size": "16px",
+        "width": "20px",
+        "word-wrap": "break-word"
       }).on('click', function (d) {
         handleClick(d);
       });
