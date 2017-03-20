@@ -65,16 +65,16 @@ export default class Word extends React.Component {
   //var self = this;
   var json = _.zipObject(this.state.trends, counts);
 //json is object where key is trends name and the count determines the inverse of size and order
-  const diameter = 650;
+  const diameter = 800;
   const color2 = d3.scale.category20c();
   const color = d3.scale.category20b();
   const duration = 300;
   const delay = 0;
 
   const svg = ReactFauxDOM.createElement('svg')
-    svg.style.setProperty('width', 700);
+    svg.style.setProperty('width', 900);
     svg.style.setProperty('background-color', 'white');
-    svg.style.setProperty('height', 700);
+    svg.style.setProperty('height', 800);
 
   const svg1 = d3.select(svg).append('svg')
         .attr('width', diameter)
@@ -129,10 +129,9 @@ export default class Word extends React.Component {
         .style({
             "fill":"white",
             "font-family":"Oswald, sans-serif",
-            "font-size": "16px",
+            "font-size": "12px",
             "width": "20px",
-            "word-wrap": "break-word"
-        })
+          })
         .on('click', (d) => {
           handleClick(d)
         });

@@ -17029,16 +17029,16 @@ var Word = function (_React$Component) {
       //var self = this;
       var json = _.zipObject(this.state.trends, counts);
       //json is object where key is trends name and the count determines the inverse of size and order
-      var diameter = 650;
+      var diameter = 800;
       var color2 = _d2.default.scale.category20c();
       var color = _d2.default.scale.category20b();
       var duration = 300;
       var delay = 0;
 
       var svg = _reactFauxDom2.default.createElement('svg');
-      svg.style.setProperty('width', 700);
+      svg.style.setProperty('width', 900);
       svg.style.setProperty('background-color', 'white');
-      svg.style.setProperty('height', 700);
+      svg.style.setProperty('height', 800);
 
       var svg1 = _d2.default.select(svg).append('svg').attr('width', diameter).attr('height', diameter);
 
@@ -17096,9 +17096,8 @@ var Word = function (_React$Component) {
       }).style({
         "fill": "white",
         "font-family": "Oswald, sans-serif",
-        "font-size": "16px",
-        "width": "20px",
-        "word-wrap": "break-word"
+        "font-size": "12px",
+        "width": "20px"
       }).on('click', function (d) {
         handleClick(d);
       });
@@ -30378,6 +30377,23 @@ var Chat = function (_React$Component) {
   }, {
     key: 'handleClick',
     value: function handleClick() {
+      var jwt = localStorage.getItem("jwt");
+      var username = 'Anonymous';
+      //auth token should be saved as a JSON string, but just in case
+      try {
+        var googleToken = JSON.parse(jwt); //pass the googleToken to the log component to parse
+      } catch (e) {
+        alert(e); // error in the above string (in this case, yes)!
+      }
+
+      this.state = {
+        loggedIn: false
+      };
+
+      if (googleToken) {
+        username = googleToken.data.given_name;
+      }
+
       //i want to post to database when clicked
       fetch('http://127.0.0.1:3000/messages', {
         method: 'POST',
@@ -30386,7 +30402,7 @@ var Chat = function (_React$Component) {
         },
         body: JSON.stringify({
           maintitle: this.findPath(this.props.location.pathname),
-          username: 'bob',
+          username: username,
           msgtext: this.state.input
         })
       }).then(function (resp) {
@@ -30604,7 +30620,7 @@ var Layout = function (_React$Component) {
               _react2.default.createElement(
                 'a',
                 { className: 'navbar-brand', href: '#page-top' },
-                'Project Pretzel'
+                'Pretzel: Be in the loop'
               )
             ),
             _react2.default.createElement(
