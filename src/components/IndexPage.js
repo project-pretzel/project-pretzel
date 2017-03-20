@@ -10,7 +10,6 @@ export default class IndexPage extends React.Component {
       <div className="home">
       <App />
         <div className="trends-selector">
-          {trends.map(trendData => <h3> {trendData} </h3>)}
         </div>
       </div>
     );

@@ -1,11 +1,12 @@
-var db = require('../db');
+var db = require('../db/index.js');
 
 module.exports = {
 
   messages: {
     get: function (callback) {
+      console.log('hihihih');
       // fetch all messages
-      // id , userid, msgtext, msgtime 
+      // id , userid, msgtext, msgtime
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
                       from messages left outer join users on (messages.userid = users.id) \
                       order by messages.id desc';
@@ -40,5 +41,22 @@ module.exports = {
         callback(err, results);
       });
     }
+  },
+
+  trends: {
+    get: function(callback) {
+      var queryStr = 'SELECT * FROM trends';
+      db.dbConnection.query(queryStr, function(err, results) {
+        callback(err, results);
+      });
+    },
+    post: function (params, callback) {
+      var queryStr = 'INSERT INTO trends (trend) VALUES (?)'
+      db.dbConnection.query(queryStr, params, function(err, results) {
+        callback(err, results);
+      });
+    }
+
   }
+
   };
