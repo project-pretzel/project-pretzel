@@ -24,26 +24,28 @@ CREATE TABLE messages (
   FOREIGN KEY (userid) REFERENCES users(id)
 );
 
-CREATE TABLE results (
-  id INT NOT NULL AUTO_INCREMENT, 
-  title TEXT, 
-  link TEXT, 
-  PRIMARY KEY (id), 
-  FOREIGN KEY (userid) REFERENCES users(id)
-);
 
 CREATE TABLE resultsItems (
   id INT NOT NULL AUTO_INCREMENT,
+  maintitle TEXT
   title TEXT,
   link TEXT,
-  pubDate TEXT,
+  pubdate TEXT,
   description TEXT
   PRIMARY KEY (id)
 );
 
-CREATE TABLE results_resultsItems (
-  results_id INT NOT NULL,
-  resultsItems_id INT NOT NULL,
-  PRIMARY KEY (results_id),
-  PRIMARY KEY (resultsItems_id)
-);
+-- CREATE TABLE results (
+--   id INT NOT NULL AUTO_INCREMENT, 
+--   title TEXT, 
+--   link TEXT, 
+--   PRIMARY KEY (id), 
+--   FOREIGN KEY (userid) REFERENCES users(id)
+-- );
+
+-- CREATE TABLE results_resultsItems (
+--   results_id INT NOT NULL,
+--   resultsItems_id INT NOT NULL,
+--   PRIMARY KEY (results_id),
+--   PRIMARY KEY (resultsItems_id)
+-- );

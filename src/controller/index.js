@@ -9,12 +9,8 @@ module.exports = {
         res.json(results);
       });
     },
-    id INT NOT NULL AUTO_INCREMENT, 
-  title TEXT, 
-  link TEXT, 
-  msgtime DATETIME, 
     post: function (req, res) {
-      var params = [req.body.title, req.body.link, req.body.msgtime];
+      var params = [req.boby.maintitle, req.body.title, req.body.link, req.body.pubdate, req.body.description];
       model.messages.post(params, function(err, results) {
         if (err) { console.log("err results post", err);}
         res.sendStatus(201);
