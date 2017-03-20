@@ -2,15 +2,6 @@
 import axios from 'axios';
 var trends = ['Nikkis butt', 'Kims butt', 'Selenas butt']; //need a default value I think or the front page breaks
 
-axios.get('/trends')
-.then(data => {
-  console.log(data);
-})
-.catch(error => {
-  console.log('there was an error, foo', error);
-});
-
-
 export default trends;
 
 // this function get's the top 10 rss stories from google news.
