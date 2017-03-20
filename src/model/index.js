@@ -3,8 +3,12 @@ var db = require('../db/index.js');
 module.exports = {
 
   results: {
-    get: function (callback) {
-      
+    get: function (parms, callback) {
+      // expect pars to be [maintitle: '']
+      // var queryStr = 'select * from resultsItems where maintitle = ? ;';
+      // db.dbConnection.query(queryStr, params, function(err, results){
+      //   callback(err, results);
+      // });
     },
     post: function (params, callback) {
       // post google api results into results table
@@ -19,7 +23,6 @@ module.exports = {
 
   messages: {
     get: function (callback) {
-      console.log('hihihih');
       // fetch all messages
       // id , userid, msgtext, msgtime
       var queryStr = 'select messages.id, users.name, messages.msgtext, messages.msgtime \
@@ -31,9 +34,10 @@ module.exports = {
     },
     post: function (params, callback) {
       // create a message for a user id based on the given username
-      // expect params to be {name(from users): '', msgtext: ''}
-      var queryStr = 'insert into messages(userid, msgtext, msgtime) \
-                      values ((select id from users where name = ? limit 1), ?, now())';
+      // expect params to be {maintitle: '', name(from users): '', msgtext: ''}
+      console.log("params", params)
+      var queryStr = 'insert into messages(userid, maintitle, msgtext, msgtime) \
+                      values ((select id from users where name = ? limit 1), ?, ?, now())';
       db.dbConnection.query(queryStr, params, function(err, results) {
         callback(err, results);
       });

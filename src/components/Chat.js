@@ -10,12 +10,17 @@ import 'whatwg-fetch'
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
-
+console.log("props", props.location.pathname)
     this.state = {
       input: '',
       messages: [],
       results: []
     };
+  }
+
+  findPath(ugly){
+    var uglyArr = ugly.split('/');
+    return uglyArr[uglyArr.length - 1]
   }
 
   handleClick(){
@@ -26,6 +31,7 @@ export default class Chat extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        maintitle: this.findPath(this.props.location.pathname),
         username: 'bob',
         msgtext: this.state.input,
       })

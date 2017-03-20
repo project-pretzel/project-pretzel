@@ -10,7 +10,6 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      console.log("req.body", req.body)
       var params = [req.body.maintitle, req.body.title, req.body.link, req.body.pubdate, req.body.description];
       model.results.post(params, function(err, results) {
         if (err) { console.log("err results post", err);}
@@ -27,7 +26,8 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.body.username, req.body.msgtext];
+      console.log("username", req.body.username)
+      var params = [req.body.username, req.body.maintitle, req.body.msgtext];
       model.messages.post(params, function(err, results) {
         if (err) { console.log("err message post", err);}
         res.sendStatus(201);
