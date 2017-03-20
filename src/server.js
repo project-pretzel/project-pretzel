@@ -1,18 +1,18 @@
 // src/server.js
 
-import path from 'path';
-import { Server } from 'http';
-import Express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
-import routes from './routes';
-import NotFoundPage from './components/NotFoundPage';
-import controller from './controller/index.js';
-import bodyparser from 'body-parser'
-import request from 'request';
-import parser from 'xml2json';
-import 'whatwg-fetch'
+var path = require('path');
+var { Server } = require('http');
+var Express = require('express');
+var React = require('react');
+var { renderToString } = require('react-dom/server');
+var { match, RouterContext } = require('react-router');
+var routes = require('./routes');
+var NotFoundPage = require('./components/NotFoundPage');
+var controller = require('./controller/index.js');
+var bodyparser = require('body-parser');
+var request = require('request');
+var parser = require('xml2json');
+
 
 // initialize the server and configure support for ejs templates
 

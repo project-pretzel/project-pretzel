@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 var trends = ['Nikkis butt', 'Kims butt' ]; //need a default value I think or the front page breaks
-var request = require('request');
-var parser = require('xml2json');
+import request from 'request';
+
 
 var getTop20Trends = function(callback) {
   request.get('https://trends.google.com/trends/hottrends/visualize/internal/data', function(err, response, data) {
