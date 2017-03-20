@@ -30340,9 +30340,9 @@ var _reactCellblock = __webpack_require__(417);
 
 __webpack_require__(279);
 
-var _jQuery = __webpack_require__(408);
+var _jquery = __webpack_require__(408);
 
-var _jQuery2 = _interopRequireDefault(_jQuery);
+var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

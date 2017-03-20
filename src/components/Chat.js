@@ -5,7 +5,7 @@ import Word from './Word';
 import Message from './Message';
 import {Grid, Row, Column} from 'react-cellblock';
 import 'whatwg-fetch';
-import $ from 'jQuery';
+import $ from 'jquery';
 
 
 export default class Chat extends React.Component {
