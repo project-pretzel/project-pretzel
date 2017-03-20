@@ -13,7 +13,8 @@ export default class Chat extends React.Component {
 
     this.state = {
       input: '',
-      messages: []
+      messages: [],
+      results: []
     };
   }
 
@@ -53,6 +54,10 @@ export default class Chat extends React.Component {
     })
   }
 
+  renderSearch(){
+    
+  }
+
   render() {
     var style = {
       border: 'solid #777',
@@ -63,7 +68,10 @@ export default class Chat extends React.Component {
     return(
       <Grid>
         <Column width="3/5">
-          Search Results!
+          <h4>Results</h4>
+          <div id="results">
+            Search Results!
+          </div>
         </Column>
         <Column width="2/5">
           <h4>Chat</h4>

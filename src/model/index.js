@@ -2,6 +2,21 @@ var db = require('../db/index.js');
 
 module.exports = {
 
+  results: {
+    get: function (callback) {
+      
+    },
+    post: function (params, callback) {
+      // post google api results into results table
+      // expect params to be [maintitle: '', title: '', link: '', pubdate: '', description: '']
+      var queryStr = 'insert into resultsItems(maintitle, title, link, pubdate, description) \
+                      values (?, ?, ?, ?, ?)';
+      db.dbConnection.query(queryStr, params, function(err, results) {
+        callback(err, results);
+      });
+    }
+  },
+
   messages: {
     get: function (callback) {
       console.log('hihihih');
