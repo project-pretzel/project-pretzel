@@ -16,10 +16,34 @@ CREATE TABLE users (
 );
 
 CREATE TABLE messages (
-  id int NOT NULL AUTO_INCREMENT, 
-  userid int NOT NULL, 
+  id INT NOT NULL AUTO_INCREMENT, 
+  userid INT NOT NULL, 
   msgtext TEXT, 
   msgtime DATETIME, 
   PRIMARY KEY (id), 
   FOREIGN KEY (userid) REFERENCES users(id)
+);
+
+CREATE TABLE results (
+  id INT NOT NULL AUTO_INCREMENT, 
+  title TEXT, 
+  link TEXT, 
+  PRIMARY KEY (id), 
+  FOREIGN KEY (userid) REFERENCES users(id)
+);
+
+CREATE TABLE resultsItems (
+  id INT NOT NULL AUTO_INCREMENT,
+  title TEXT,
+  link TEXT,
+  pubDate TEXT,
+  description TEXT
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE results_resultsItems (
+  results_id INT NOT NULL,
+  resultsItems_id INT NOT NULL,
+  PRIMARY KEY (results_id),
+  PRIMARY KEY (resultsItems_id)
 );
