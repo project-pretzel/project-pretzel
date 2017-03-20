@@ -7,11 +7,11 @@ CREATE DATABASE pretzel;
 USE pretzel;
 
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT, 
-  googleid VARCHAR(25), 
-  name VARCHAR(25), 
-  email VARCHAR(25), 
-  img TEXT, 
+  id int NOT NULL AUTO_INCREMENT,
+  googleid VARCHAR(25),
+  name VARCHAR(25),
+  email VARCHAR(25),
+  img TEXT,
   PRIMARY KEY (id)
 );
 
@@ -49,3 +49,8 @@ CREATE TABLE resultsItems (
 --   PRIMARY KEY (results_id),
 --   PRIMARY KEY (resultsItems_id)
 -- );
+
+CREATE TABLE trends (
+  id int NOT NULL AUTO_INCREMENT,
+  trend TEXT
+)
